@@ -15,7 +15,13 @@ public class Clicou : MonoBehaviour {
             GameObject faca = GameObject.Find("Faca");
             if(faca != null){
                 (faca.GetComponent("JogarFaca") as JogarFaca).Arremessar();
+                Invoke("CreateNextKnife", 0.5f);
+                
             }
         }
-    }          
+    }    
+    void CreateNextKnife(){
+        GameObject faca = Instantiate(Resources.Load<GameObject>("Prefabs/Faca"));
+        faca.name = "Faca";
+    }
 }
