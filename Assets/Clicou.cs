@@ -8,10 +8,13 @@ public class Clicou : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetMouseButtonUp(0)) (GameObject.Find("Faca").GetComponent("JogarFaca") as JogarFaca).Arremessar();
+
+    // Update is called once per frame
+    void Update(){
+        if (Input.GetMouseButtonUp(0)){
+            JogarFaca jf = (GameObject.Find("Faca").GetComponent("JogarFaca") as JogarFaca);
+            if (jf != null) jf.Arremessar();
+        }
     }
           
 }

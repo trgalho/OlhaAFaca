@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JogarFaca : MonoBehaviour {
     private bool arremessar;
-    private readonly int forca = 10;
+    private readonly int forca = 300;
     private Rigidbody2D ridigbody2D;
     private readonly float posX = 0;
     private readonly float posY = -4.39f;
@@ -28,10 +28,19 @@ public class JogarFaca : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         this.arremessar = false;
-        this.gameObject.name += Random.Range(1, 20);
-        Instantiate(this, Vector3.right*posX + Vector3.up*posY, Quaternion.identity).name="Faca";
-        this.ridigbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-        this.gameObject.transform.parent = GameObject.Find("Alvo").transform;
+        if (collision.gameObject.name.Equals("CirculoMadeira"))
+        {
+            this.gameObject.name += Random.Range(1, 20);
+            //Instantiate(this, Vector3.right * posX + Vector3.up * posY, Quaternion.identity).name = "Faca";
+            Instantiate(this, Vector2.up * posY, Quaternion.AngleAxis(45,Vector3.forward)).name = "Faca";
+            this.ridigbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            this.gameObject.transform.parent = GameObject.Find("Alvo").transform;
+            GameControl.control.nextKnife();
+        }
+        else {
+            Destroy(GameObject.Find("Faca"));
+            Application.LoadLevel("OlhaAFaca");
+        }
         Debug.Log("colidiu");
         
     }

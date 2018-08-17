@@ -6,16 +6,17 @@ public class Rotate : MonoBehaviour {
     private float speed;
 	// Use this for initialization
 	void Start () {
-        changeSpeed();
+        InvokeRepeating("changeSpeed",0f,10f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Time.deltaTime % 10 == 0.0f) changeSpeed();
         transform.Rotate(Vector3.forward*speed);
 		
 	}
     void changeSpeed() {
         speed = Random.Range(0.1f,5);
+        Debug.Log("speed change to: " + speed);
+ 
     }
 }
