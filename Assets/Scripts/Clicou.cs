@@ -13,7 +13,7 @@ public class Clicou : MonoBehaviour {
     void Update(){
         if (Input.GetMouseButtonUp(0) && !GameControl.control.TheGameIsOver()){
             GameObject faca = GameObject.Find("Faca");
-            if(faca !0= null){
+            if(faca != null){
                 (faca.GetComponent("JogarFaca") as JogarFaca).Arremessar();
             }
         }

@@ -41,7 +41,7 @@ public class JogarFaca : MonoBehaviour {
             this.ridigbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
             gameObject.transform.parent = GameObject.Find("Alvo").transform;
             gameObject.transform.SetPositionAndRotation(Vector3.up * cravadaY, quaternionAngulo45);
-            GameControl.control.nextKnife();
+            GameControl.control.NextKnife();
         }
         else{
             if(gameObject.name == "Faca") gameObject.GetComponent<AudioSource>().Play();
@@ -52,3 +52,4 @@ public class JogarFaca : MonoBehaviour {
     }
     
 }
+    

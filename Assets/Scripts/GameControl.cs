@@ -34,7 +34,7 @@ public class GameControl : MonoBehaviour {
             control.Start();
         }        
     }
-    public void nextKnife(){
+    public void NextKnife(){
         if (knifes == 0){
             stage++;
             SceneManager.LoadScene("OlhaAFaca");
@@ -57,6 +57,11 @@ public class GameControl : MonoBehaviour {
     public bool TheGameIsOver() { return gameOver; }
     public void Restart(){
         SceneManager.LoadScene("OlhaAFaca");
+        Debug.Log("restart");
     }
-
+    public void Quit(){
+        Debug.Log("quit");
+        Application.Quit();
+        
+    }
 }
