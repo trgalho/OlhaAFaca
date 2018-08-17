@@ -43,8 +43,6 @@ public class GameControl : MonoBehaviour {
     private void OnGUI(){
         GUIStyle textStyle = new GUIStyle();
         textStyle.fontSize = 23;
-        GUI.backgroundColor = Color.gray;
-        GUI.contentColor = Color.red;
         GUI.Label(new Rect(20, 20, 100,20),"Fase: " + stage, textStyle);
         textStyle.fontSize = 12;
         GUI.Label(new Rect(20, 50, 100, 20),"Facas restantes: "+ knifes, textStyle);

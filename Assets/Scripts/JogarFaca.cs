@@ -24,6 +24,7 @@ public class JogarFaca : MonoBehaviour {
         if (collision.gameObject.name.StartsWith("barrel")){
             Destroy(gameObject.GetComponent<Collider2D>());
             GameObject facaCortada = Instantiate(Resources.Load<GameObject>("Prefabs/StickedKnifes/" + gameObject.name));
+            Debug.Log("Knife name: " + gameObject.name);
             facaCortada.name = gameObject.name+ Random.Range(1, 20);
             facaCortada.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             facaCortada.transform.parent = GameObject.Find("Alvo").transform;

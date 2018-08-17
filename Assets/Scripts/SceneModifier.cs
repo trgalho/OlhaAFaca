@@ -20,7 +20,7 @@ public class SceneModifier : MonoBehaviour {
 	}
     void Update(){
         if (Input.GetMouseButtonUp(0) && !GameControl.control.TheGameIsOver()){
-            if (Random.Range(1, 10) > 9) Toasted();
+            if (Random.Range(1, 10) < 2) Toasted();
             GameObject faca = GameObject.Find(knifes[knifeIndex]);
             if (faca != null){
                 (faca.GetComponent("JogarFaca") as JogarFaca).Arremessar();
