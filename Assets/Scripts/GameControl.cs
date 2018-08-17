@@ -11,10 +11,11 @@ public class GameControl : MonoBehaviour {
     private readonly int MIN_KNIFES = 5;
     private readonly int MAX_KNIFES = 8;
     private bool gameOver;
+    private GUIStyle style;
 	// Use this for initialization
 	void Start () {
         SeedKnifes();
-        gameOver = false;
+        gameOver = false;        
     }
     void SeedKnifes(){
         knifes = Random.Range(MIN_KNIFES, MAX_KNIFES);
@@ -33,15 +34,20 @@ public class GameControl : MonoBehaviour {
         }        
     }
     public void NextKnife(){
-        if (knifes == 0){
+        if (knifes == 1){
             stage++;
             SceneManager.LoadScene("OlhaAFaca");
         }
         else knifes--;
     }
     private void OnGUI(){
-        GUI.Label(new Rect(10, 10, 100,30), "Fase: " + stage);
-        GUI.Label(new Rect(10, 30, 100, 30), "Knifes: " + (knifes + 1));
+        GUIStyle textStyle = new GUIStyle();
+        textStyle.fontSize = 23;
+        GUI.backgroundColor = Color.gray;
+        GUI.contentColor = Color.red;
+        GUI.Label(new Rect(20, 20, 100,20),"Fase: " + stage, textStyle);
+        textStyle.fontSize = 12;
+        GUI.Label(new Rect(20, 50, 100, 20),"Facas restantes: "+ knifes, textStyle);
     }
     public void GameOver() {
         if (!gameOver){
@@ -61,4 +67,5 @@ public class GameControl : MonoBehaviour {
         Application.Quit();
         
     }
+    public int GetStage() { return stage; }
 }

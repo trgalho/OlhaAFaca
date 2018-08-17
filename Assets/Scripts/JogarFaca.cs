@@ -21,10 +21,10 @@ public class JogarFaca : MonoBehaviour {
         this.arremessar = false;
         AudioSource audioSource = collision.gameObject.GetComponent<AudioSource>() as AudioSource;
         if(audioSource != null) audioSource.Play();        
-        if (collision.gameObject.name.Equals("CirculoMadeira")){
+        if (collision.gameObject.name.StartsWith("barrel")){
             Destroy(gameObject.GetComponent<Collider2D>());
-            GameObject facaCortada = Instantiate(Resources.Load<GameObject>("Prefabs/FacaCravada"));
-            facaCortada.name = "Faca"+ Random.Range(1, 20);
+            GameObject facaCortada = Instantiate(Resources.Load<GameObject>("Prefabs/StickedKnifes/" + gameObject.name));
+            facaCortada.name = gameObject.name+ Random.Range(1, 20);
             facaCortada.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             facaCortada.transform.parent = GameObject.Find("Alvo").transform;
             GameControl.control.NextKnife();

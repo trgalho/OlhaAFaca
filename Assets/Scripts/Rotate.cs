@@ -14,7 +14,11 @@ public class Rotate : MonoBehaviour {
         transform.Rotate(Vector3.forward*speed);		
 	}
     void ChangeSpeed() {
-        speed = Random.Range(1.5f,5);
-        Debug.Log("speed change to: " + speed); 
+        int direction =1;
+        if (GameControl.control.GetStage() > 3) {
+            direction = Random.Range(0, 1) > 0.5f ? -1 : 1;
+        }        
+        speed = Random.Range(2, 5) * direction;
+        Debug.Log("speed change to: " + speed);
     }
 }
